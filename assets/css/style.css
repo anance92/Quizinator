@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #e0bbe0;
+    --secondary: #3a4a66;
+    --tertiary: rgb(192, 246, 253);
+    --grey: #333;
+    font-size: 100%;
+}
+
+li {
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #e0bbe0;
+}
+
+.startButton {
+    outline: none;
+    border: none;
+    display: inline-block;
+    padding: 10px 15px;
+    background: var(--primary);
+    font-size: 1.2rem;
+    border-radius: 25px;
+    position: relative;
+    top: -3px;
+    box-shadow: 0 3px var(--grey);
+}
+  
+.startButton:hover {
+    box-shadow: 0 2px var(--grey);
+    top: -2px;
+}
+
+.startButton:active {
+    box-shadow: 0 0px var(--grey);
+    top: 0;
+}
