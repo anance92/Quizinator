@@ -2,14 +2,16 @@ var currentQuestion = 0;
 var currentAnswers = 0;
 var endQuiz = false;
 var timerOn = false;
+var playerScore = 0;
 var startButton = document.querySelector("#startBtn");
+var saveButton = document.querySelector("#saveBtn");
 var questionDiv = document.querySelector("#question");
 var pageContainer = document.querySelector("#container");
 var startPage = document.querySelector("#start");
 var questions = [{
     question: "What color is the sky?",
     answers: ["Red", "blue", "green", "purple"],
-    correctAnswer: 1
+    correctAnswer: 2
 },
 {
     question: "What color is the sea?",
@@ -19,7 +21,7 @@ var questions = [{
 {
     question: "What color is grass?",
     answers: ["Red", "blue", "green", "purple"],
-    correctAnswer: 1
+    correctAnswer: 3
 },
 {
     question: "What color is a ruby?",
@@ -29,13 +31,13 @@ var questions = [{
 {
     question: "What color are grapes?",
     answers: ["Red", "blue", "green", "purple"],
-    correctAnswer: 1
+    correctAnswer: 4
 }];
 
 function displayFirstQuestion() {
     var question = questions[currentQuestion];
     var answersOl = document.createElement("ol");
-    var number = 30;
+    var numTimer = 30;
 
     // Display question
     var questionHeading = document.createElement("h3");
@@ -56,25 +58,30 @@ function displayFirstQuestion() {
     startPage.remove();
 
     // and start the timer for the quiz
-    if (timerOn = false) {
+    if (timerOn == false) {
         var timerId = setInterval(function(){
-            number--;
+            numTimer--;
             var numberSpan = document.querySelector("#number");
-            numberSpan.textContent = number;
-            if (number <= 0) {
+            numberSpan.textContent = numTimer;
+            if (numTimer <= 0) {
                 clearInterval(timerId);
                 console.log("Timer Stopped");
             }
         }, 1000);
     }
     
+    // If timer runs out, end quiz
+    if (numTimer <= 0) {
+        clearInterval(timerId);
+        endQuiz = true;
+    }
 
     // If gone thru all the questions, end quiz
     if (currentQuestion < 5){
         currentQuestion++;
     } else {
+        clearInterval(timerId);
         endQuiz = true;
-        // end quiz here
         console.log(endQuiz);
     }
     
@@ -98,6 +105,12 @@ startButton.addEventListener("click", function() {
     displayFirstQuestion();
     timerOn = true;
 });
+saveButton.addEventListener("click", function() {
+    var name = document.querySelector("#textInput").value;
+    console.log(name);
+    localStorage.setItem("Name", name);
+    localStorage.setItem("Score", playerScore);
+});
 questionDiv.addEventListener("click", function(event) {
     console.log(event.target.getAttribute("user-answer"));
     if ((endQuiz == false) && (currentQuestion < 5)) {
@@ -107,6 +120,7 @@ questionDiv.addEventListener("click", function(event) {
         questionDiv.remove();
         // enter name to record quiz score
         var title = document.createElement("h3");
+        document.getElementById("").style.display = "block";
         var nameInput = document.querySelector("input[name='your-name']").nodeValue;
         //title.textContent = "Please enter your initials: ";
         pageContainer.appendChild(title);

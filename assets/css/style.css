@@ -12,7 +12,42 @@
 
 li {
     font-size: 1.6rem;
+    text-align: center;
     cursor: pointer;
+    color: var(--grey);
+    padding: 15px 15px;
+    border: 2px solid var(--grey);
+    width: 50%;
+    background: var(--tertiary);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 2.3rem;
+    text-align: left;
+}
+#start {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 100px;
+}
+#number {
+    font-size: 2.3rem;
+    text-align: right;
+    width: 100%;
+}
+#question {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 100px;
+}
+.form-group {
+    display: block;
+    margin: auto;
+    text-align: center;
 }
 
 li:hover {
