@@ -126,8 +126,3 @@ questionDiv.addEventListener("click", function(event) {
         pageContainer.appendChild(title);
     }
 });
-
-
-
-// Once I begin the quiz, I want to generate my quiz questions and answers
-
